@@ -34,10 +34,10 @@
                     $mail->SMTPAuth=true;
                     $mail->SMTPSecure='tls';
     
-                    $mail->Username='email account';
-                    $mail->Password='email password';
+                    $mail->Username='Contact.robotizia@gmail.com';
+                    $mail->Password='ooneajfravnsfsir';
     
-                    $mail->setFrom('email account', 'OTP Verification');
+                    $mail->setFrom('Contact.robotizia@gmail.com', 'OTP Verification');
                     $mail->addAddress($_POST["email"]);
     
                     $mail->isHTML(true);

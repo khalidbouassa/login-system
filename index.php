@@ -1,5 +1,5 @@
 <?php
-    include('connect/connection.php');
+    include('connect/connection1.php');
 
     if(isset($_POST["login"])){
         $email = mysqli_real_escape_string($connect, trim($_POST['email']));
@@ -37,103 +37,101 @@
 
 ?>
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html>
 
-<!doctype html>
 <html lang="en">
+
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+  <title>Robotizia</title>
 
-    <link rel="stylesheet" href="style.css">
+  <!-- GOOGLE FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
+  <link href="../plugins/material/css/materialdesignicons.min.css" rel="stylesheet" />
+  <link href="../plugins/simplebar/simplebar.css" rel="stylesheet" />
 
-    <link rel="icon" href="Favicon.png">
+  <!-- PLUGINS CSS STYLE -->
+  <link href="../plugins/nprogress/nprogress.css" rel="stylesheet" />
+  
+  <!-- Robotizia CSS -->
+  <link id="main-css-href" rel="stylesheet" href="../css/style.css" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  
 
-    <title>Login Form</title>
+
+  <!-- FAVICON -->
+  <link href="../images/Logo_Robotizia.png" rel="shortcut icon" />
+
+  <!--
+    HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+  -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="../plugins/nprogress/nprogress.js"></script>
 </head>
-<body>
 
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-    <div class="container">
-        <a class="navbar-brand" href="#">Login Form</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php" style="font-weight:bold; color:black; text-decoration:underline">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register.php">Register</a>
-                </li>
-            </ul>
-
-        </div>
-    </div>
-</nav>
-
-<main class="login-form">
-    <div class="cotainer">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Login</div>
-                    <div class="card-body">
-                        <form action="#" method="POST" name="login">
-                            <div class="form-group row">
-                                <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-                                <div class="col-md-6">
-                                    <input type="text" id="email_address" class="form-control" name="email" required autofocus>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                                <div class="col-md-6">
-                                    <input type="password" id="password" class="form-control" name="password" required>
-                                    <i class="bi bi-eye-slash" id="togglePassword"></i>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 offset-md-4">
-                                <input type="submit" value="Login" name="login">
-                                <a href="recover_psw.php" class="btn btn-link">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
+<body class="bg-light-gray" id="body" style="background-image: url('../images/page.png'); height: 100%; background-position: center;
+background-repeat: no-repeat; background-size: cover;">
+          <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh">
+          <div class="d-flex flex-column justify-content-between">
+            <div class="row justify-content-center">
+              <div class="col-lg-6 col-md-10">
+                <div class="card card-default mb-0">
+                  <div class="card-header pb-0">
+                    <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
+                      <a class="w-auto pl-0">
+                        <img src="../images/Logo_Robotizia.png" alt="Robotizia">
+                      </a>
                     </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+                  </div>
+                  <div class="card-body px-5 pb-5 pt-0">
 
-</main>
+                    <h4 class="text-dark mb-6 text-center">Sign in for free</h4>
+
+                    <form action="#" method="POST" name="login">
+                      <div class="row">
+                        <div class="form-group col-md-12 mb-4">
+                          <input type="text" class="form-control input-lg" id="email" aria-describedby="emailHelp"
+                            placeholder="email or username" name="email">
+                        </div>
+                        <div class="form-group col-md-12 ">
+                          <input type="password" class="form-control input-lg" id="password" placeholder="Password" name="password">
+                        </div>
+                        <div class="col-md-12">
+
+                          <div class="d-flex justify-content-between mb-3">
+
+                            <div class="custom-control custom-checkbox mr-3 mb-3">
+                              <input type="checkbox" class="custom-control-input" id="customCheck2">
+                              <label class="custom-control-label" for="customCheck2">Remember me</label>
+                            </div>
+
+                            <a class="text-color" href="recover_psw.php"> <h6>Forgot password?<h6> </a>
+
+                          </div>
+
+                          <button type="submit" name="submit" class="btn btn-primary btn-pill mb-4">Sign In</button>
+
+                          <p>Don't have an account yet ?
+                            <a class="text-blue" href="sign-up.php">Sign Up</a>
+                          </p>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
 </body>
 </html>
 <script>

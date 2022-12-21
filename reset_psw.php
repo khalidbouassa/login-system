@@ -1,49 +1,58 @@
 <?php session_start() ;
-include('connect/connection.php');
+include('connect/connection1.php');
 ?>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<!doctype html>
-<html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+  <title>Robotizia</title>
 
-    <link rel="stylesheet" href="style.css">
+  <!-- GOOGLE FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
+  <link href="../plugins/material/css/materialdesignicons.min.css" rel="stylesheet" />
+  <link href="../plugins/simplebar/simplebar.css" rel="stylesheet" />
 
-    <link rel="icon" href="Favicon.png">
+  <!-- PLUGINS CSS STYLE -->
+  <link href="../plugins/nprogress/nprogress.css" rel="stylesheet" />
+  
+  <!-- Robotizia CSS -->
+  <link id="main-css-href" rel="stylesheet" href="../css/style.css" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  
 
-    <title>Login Form</title>
+
+  <!-- FAVICON -->
+  <link href="../images/Logo_Robotizia.png" rel="shortcut icon" />
+
+  <!--
+    HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+  -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="../plugins/nprogress/nprogress.js"></script>
 </head>
-<body>
-
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-    <div class="container">
-        <a class="navbar-brand" href="#">Password Reset Form</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</nav>
-
-<main class="login-form">
-    <div class="cotainer">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Reset Your Password</div>
+<body class="bg-light-gray" id="body" style="background-image: url('../images/page.png'); height: 100%; background-position: center;
+background-repeat: no-repeat; background-size: cover;">
+          <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh">
+          <div class="d-flex flex-column justify-content-between">
+            <div class="row justify-content-center mt-5">
+              <div class="col-md-10">
+                <div class="card card-default">
+                  <div class="card-header">
+                    <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
+                      <a class="w-auto pl-0" href="ressetpass.php">
+                      <img src="../images/Logo_Robotizia.png" alt="Robotizia">
+                        <span class="brand-name text-dark"></span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="card-body p-5">
+                  <h4 class="text-dark mb-5"><center>Reset Your Password </center></h4>
                     <div class="card-body">
                         <form action="#" method="POST" name="login">
 
@@ -55,40 +64,42 @@ include('connect/connection.php');
                                 </div>
                             </div>
 
-                            <div class="col-md-6 offset-md-4">
-                                <input type="submit" value="Reset" name="reset">
-                            </div>
+                          
+                                <button type="submit" class="btn btn-primary btn-pill mb-4" name="reset">Reset</button>
+  </form>  
                     </div>
-                    </form>
+                    </div>
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
-    </div>
 
-</main>
+          </div>
+        </div>
+
 </body>
 </html>
 <?php
     if(isset($_POST["reset"])){
-        include('connect/connection.php');
+        include('connect/connection1.php');
         $psw = $_POST["password"];
 
         $token = $_SESSION['token'];
         $Email = $_SESSION['email'];
+        
+        $options = ['cost' => 12, ];
 
-        $hash = password_hash( $psw , PASSWORD_DEFAULT );
+        $hash = password_hash($psw,PASSWORD_BCRYPT, $options);
 
-        $sql = mysqli_query($connect, "SELECT * FROM login WHERE email='$Email'");
+        $sql = mysqli_query($connect, "SELECT * FROM `login_user` WHERE email='$Email'");
         $query = mysqli_num_rows($sql);
   	    $fetch = mysqli_fetch_assoc($sql);
 
         if($Email){
             $new_pass = $hash;
-            mysqli_query($connect, "UPDATE login SET password='$new_pass' WHERE email='$Email'");
+            mysqli_query($connect, "UPDATE `login_user` SET user_password='$new_pass' WHERE email='$Email'");
             ?>
             <script>
-                window.location.replace("index.php");
+                window.location.replace("../sign-in.php");
                 alert("<?php echo "your password has been succesful reset"?>");
             </script>
             <?php
